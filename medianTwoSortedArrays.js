@@ -21,6 +21,11 @@ nums8 = [1,3,5,7]
 
 //The median is 3
 
+nums9 = [1,3]
+nums10 = [2,4]
+
+//The median is 2.5
+
 function medianFinder(arr1, arr2) {
     let totalNumbers = arr1.length + arr2.length
     let medianIndex
@@ -63,3 +68,4 @@ console.log(medianFinder(nums1, nums2))
 console.log(medianFinder(nums3, nums4))
 console.log(medianFinder(nums5,nums6))
 console.log(medianFinder(nums7, nums8))
+console.log(medianFinder(nums9,nums10))
