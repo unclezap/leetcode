@@ -12,6 +12,7 @@ function maxProfit(prices) {
             min = prices[i]
             max = prices[i + 1]
         }
+        //putting this here allows you to get a difference of zero in the case of only-decreasing stocks
         if (prices[i] > max) {
             console.log("max", i)
             max = prices[i]
