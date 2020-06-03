@@ -1,1 +1,1 @@
-console.log(Math.ceil(8 * Math.random()))
+console.log(Math.ceil(2 * Math.random()))
