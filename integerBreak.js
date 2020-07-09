@@ -14,6 +14,8 @@ var integerBreakSwitch = function(n) {
     }
 };
 
+console.log(integerBreakSwitch(12))
+
 var integerBreakSwitchNoFloor = function(n) {
     if (n < 4) {
         return n - 1
