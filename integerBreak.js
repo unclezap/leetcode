@@ -551,6 +551,22 @@ return 1549681956
 }
 }
 
+var integerBreakClarion = function(n) {
+    //maximize number of 3s (such that remainder is NOT 1)
+    //then complete with 2s
+    if (n<3){
+        return 1
+    }
+    if (n%3 === 0){
+        return n===3 ? 2 : 3**(n/3)
+    } else if (n%3 === 1){
+        let numOf3s = Math.floor(n/3)-1
+        return 4*(3**(numOf3s))
+    } else {
+        return 3**(Math.floor(n/3))*2
+    }
+};
+
 // for (let i=0; i < 14; i++) {
 //     console.log(integerBreakAllAnswersSwitch(i))
 // }
@@ -563,27 +579,27 @@ return 1549681956
 
 
 
-// console.log("=====")
-// start = Date.now()
-// for (u=0;u<100000000;u++) {
-//     for (let i=2; i < 14; i++) {
-//         integerBreakSwitch(i)
-//     }
-// }
-// end = Date.now()
-// timeElapsed = end - start
-// console.log(`switch time: ${timeElapsed} ms`)
-
 console.log("=====")
 start = Date.now()
 for (u=0;u<100000000;u++) {
     for (let i=2; i < 14; i++) {
-        integerBreakIf(i)
+        integerBreakSwitch(i)
     }
 }
 end = Date.now()
 timeElapsed = end - start
-console.log(`if time: ${timeElapsed} ms`)
+console.log(`switch time: ${timeElapsed} ms`)
+
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<100000000;u++) {
+//     for (let i=2; i < 14; i++) {
+//         integerBreakIf(i)
+//     }
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`if time: ${timeElapsed} ms`)
 
 // console.log("=====")
 // start = Date.now()
@@ -607,27 +623,27 @@ console.log(`if time: ${timeElapsed} ms`)
 // timeElapsed = end - start
 // console.log(`if no floor time: ${timeElapsed} ms`)
 
-console.log("=====")
-start = Date.now()
-for (u=0;u<100000000;u++) {
-    for (let i=2; i < 14; i++) {
-        integerBreakAllAnswers(i)
-    }
-}
-end = Date.now()
-timeElapsed = end - start
-console.log(`all answers time: ${timeElapsed} ms`)
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<100000000;u++) {
+//     for (let i=2; i < 14; i++) {
+//         integerBreakAllAnswers(i)
+//     }
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`all answers time: ${timeElapsed} ms`)
 
-console.log("=====")
-start = Date.now()
-for (u=0;u<100000000;u++) {
-    for (let i=2; i < 14; i++) {
-        integerBreakAllAnswersDoubleEquals(i)
-    }
-}
-end = Date.now()
-timeElapsed = end - start
-console.log(`all answers two equals time: ${timeElapsed} ms`)
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<100000000;u++) {
+//     for (let i=2; i < 14; i++) {
+//         integerBreakAllAnswersDoubleEquals(i)
+//     }
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`all answers two equals time: ${timeElapsed} ms`)
 
 // console.log("=====")
 // start = Date.now()
@@ -650,6 +666,17 @@ for (u=0;u<100000000;u++) {
 end = Date.now()
 timeElapsed = end - start
 console.log(`all answers switch time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000000;u++) {
+    for (let i=2; i < 14; i++) {
+        integerBreakClarion(i)
+    }
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`clarion time: ${timeElapsed} ms`)
 
 // 2
 // 1 * 1 = 1
