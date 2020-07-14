@@ -26,7 +26,8 @@ var getLastMoment = function(n, left, right) {
         let antPositions = {}
 
         for (let ant=0; ant < currentAnts.length; ant++) {
-            thisAnt = currentAnts[ant]
+            // thisAnt = []
+            thisAnt = [currentAnts[ant][0], currentAnts[ant][1]]
             if (currentAnts[ant + thisAnt[1]]) {
                 otherAnt = currentAnts[ant + thisAnt[1]]
             } else {
@@ -34,9 +35,7 @@ var getLastMoment = function(n, left, right) {
             }
 
             if ((otherAnt && (thisAnt[0] + thisAnt[1]) === otherAnt[0]) && (otherAnt[0] + otherAnt[1] === thisAnt[0])) {
-                console.log("before", currentAnts)
                 thisAnt[1] *= -1
-                console.log("after", currentAnts)
             } else {
                 thisAnt[0] += thisAnt[1]
             }
@@ -69,15 +68,15 @@ var getLastMoment = function(n, left, right) {
 
 // Input: n = 4, left = [4,3], right = [0,1]
 // Output: 4
-// console.log(getLastMoment(4, [4,3], [0,1]))
+console.log(getLastMoment(4, [4,3], [0,1]))
 
 // Input: n = 7, left = [], right = [0,1,2,3,4,5,6,7]
 // Output: 7
-// console.log(getLastMoment(7, [], [0,1,2,3,4,5,6,7]))
+console.log(getLastMoment(7, [], [0,1,2,3,4,5,6,7]))
 
 // Input: n = 7, left = [0,1,2,3,4,5,6,7], right = []
 // Output: 7
-// console.log(getLastMoment(7, [0,1,2,3,4,5,6,7], []))
+console.log(getLastMoment(7, [0,1,2,3,4,5,6,7], []))
 
 // Input: n = 9, left = [5], right = [4]
 // Output: 5
@@ -85,6 +84,7 @@ console.log(getLastMoment(9, [5], [4]))
 
 // Input: n = 6, left = [6], right = [0]
 // Output: 6
-// console.log(getLastMoment(6, [6], [0]))
+console.log(getLastMoment(6, [6], [0]))
 
-// console.log(getLastMoment(n=2, left=[],right=[0,1,2]))
+console.log(getLastMoment(n=2, left=[],right=[0,1,2]))
+//output 2
