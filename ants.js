@@ -1,4 +1,14 @@
+//https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/submissions/
+
 var getLastMoment = function(n, left, right) {
+
+    if (right === []) {
+        return Math.max(left)
+    }
+
+    if (left === []) {
+        return Math.min(right)
+    }
 
     right = right.map((ant) => [ant, 1])
 
@@ -19,7 +29,7 @@ var getLastMoment = function(n, left, right) {
     // console.log("currentAnts", currentAnts)
     // console.log("===============")
 
-    while (nextAnts.length > 0 && steps < 10) {
+    while (nextAnts.length > 0) {
         steps++
         currentAnts = nextAnts
         nextAnts = []
@@ -68,7 +78,7 @@ var getLastMoment = function(n, left, right) {
 
 // Input: n = 4, left = [4,3], right = [0,1]
 // Output: 4
-console.log(getLastMoment(4, [4,3], [0,1]))
+// console.log(getLastMoment(4, [4,3], [0,1]))
 
 // Input: n = 7, left = [], right = [0,1,2,3,4,5,6,7]
 // Output: 7
@@ -80,11 +90,16 @@ console.log(getLastMoment(7, [0,1,2,3,4,5,6,7], []))
 
 // Input: n = 9, left = [5], right = [4]
 // Output: 5
-console.log(getLastMoment(9, [5], [4]))
-
+// console.log(getLastMoment(9, [5], [4]))
+// 
 // Input: n = 6, left = [6], right = [0]
 // Output: 6
-console.log(getLastMoment(6, [6], [0]))
+// console.log(getLastMoment(6, [6], [0]))
 
-console.log(getLastMoment(n=2, left=[],right=[0,1,2]))
+// console.log(getLastMoment(n=2, left=[],right=[0,1,2]))
 //output 2
+
+// console.log(getLastMoment(n=20, [4,7,15],[9,3,13,10]))
+// input 20
+// [4,7,15]
+// [9,3,13,10]
