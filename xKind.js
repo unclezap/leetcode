@@ -219,6 +219,61 @@ var hasGroupsSizeX = function(deck) {
     return true
 };
 
+var hasGroupsSizeXEdited = function(deck) {
+    if (deck.length === 1) {
+        return false
+    }
+    
+    let hash = {}
+    let array = []
+    let index = 1
+    
+    for (let i=0; i < deck.length; i++) {
+        if (hash[deck[i]]) {
+            array[hash[deck[i]] - 1]++
+        } else {
+            hash[deck[i]] = index
+            array.push(1)
+            index++
+        }
+    }
+
+    let max
+    let divides
+    let min = Math.min(...array)
+
+    if (min < 4) {
+        if (min === 1) {
+            return false
+        } else {
+            max = 3
+        }
+    } else {
+        max = min/2
+    }
+
+    for (let i=2; i <= max; i++) {
+        divides = true
+        for (let j=0; j < array.length; j++) {
+            if (array[j] % i !== 0) {
+                divides = false
+                break
+            }
+        }
+        if (divides) {
+            return true
+        }
+    }
+
+    for (let j=0; j < array.length; j++) {
+        if (array[j] % min !== 0) {
+            return false
+        }
+    }
+
+    return true
+};
+
 console.log("=====")
 start = Date.now()
 for (u=0;u<100000;u++) {
@@ -234,6 +289,22 @@ hasGroupsSizeX(deck8)
 end = Date.now()
 timeElapsed = end - start
 console.log(`first algo time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+hasGroupsSizeXEdited(deck1)
+hasGroupsSizeXEdited(deck2)
+hasGroupsSizeXEdited(deck3)
+hasGroupsSizeXEdited(deck4)
+hasGroupsSizeXEdited(deck5)
+hasGroupsSizeXEdited(deck6)
+hasGroupsSizeXEdited(deck7)
+hasGroupsSizeXEdited(deck8)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`first algo edited time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
