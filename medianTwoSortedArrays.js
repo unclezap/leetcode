@@ -26,10 +26,21 @@ nums10 = [2,4]
 
 //The median is 2.5
 
+nums11 = []
+nums12 = [1]
+
+//median is 1
+
+nums13 = []
+nums14 = [2,3]
+
+// median is 2.5
+
 function medianFinder(arr1, arr2) {
     let totalNumbers = arr1.length + arr2.length
     let medianIndex
     let odd
+
     if (totalNumbers % 2 === 0) {
         medianIndex = totalNumbers/2 - 1
         odd = false
@@ -38,8 +49,23 @@ function medianFinder(arr1, arr2) {
         odd = true
     }
 
+    if (arr1.length === 0) {
+        if (odd) {
+            return arr2[medianIndex]
+        } else {
+            return (arr2[medianIndex] + arr2[medianIndex + 1])/2
+        }
+    } else if (arr2.length === 0) {
+        if (odd) {
+            return arr1[medianIndex]
+        } else {
+            return (arr1[medianIndex] + arr1[medianIndex + 1])/2
+        }
+    }
+
     let arr1Count = 0
     let arr2Count = 0
+
     for (let i=0; i < medianIndex; i++) {
         if (arr1[arr1Count] < arr2[arr2Count]) {
             arr1Count++
@@ -61,7 +87,6 @@ function medianFinder(arr1, arr2) {
     } else {
         return (arr1[arr1Count] + arr2[arr2Count])/2
     }
-
 }
 
 console.log(medianFinder(nums1, nums2))
@@ -69,3 +94,5 @@ console.log(medianFinder(nums3, nums4))
 console.log(medianFinder(nums5,nums6))
 console.log(medianFinder(nums7, nums8))
 console.log(medianFinder(nums9,nums10))
+console.log(medianFinder(nums11, nums12))
+console.log(medianFinder(nums13, nums14))

@@ -30,6 +30,31 @@ var longestConsecutiveHash = function(nums) {
     return max
 };
 
+var longestConsecutiveObject = function(nums) {
+    let object = new Object()
+    
+    for (let i=0; i < nums.length; i++) {
+        if (!object[nums[i]]) {
+            object[nums[i]] = 1
+        }
+    }
+    
+    let tempMax
+    let max = 0
+
+    for (let i=0; i < nums.length; i++) {
+        if (!object[nums[i] - 1]) {
+            tempMax = 1
+            while (object[nums[i] + tempMax]) {
+                tempMax++
+            }
+            max = Math.max(max, tempMax)
+        }
+    }
+
+    return max
+};
+
 var longestConsecutiveMap = function(nums) {
     let map = new Map()
     
@@ -90,6 +115,17 @@ for (let i=0; i < 100000; i++) {
 end = Date.now()
 timeElapsed = end - start
 console.log(`hash time: ${timeElapsed} ms`)
+
+console.log("======")
+start = Date.now()
+for (let i=0; i < 100000; i++) {
+    longestConsecutiveObject(nums1)
+    longestConsecutiveObject(nums2)
+    longestConsecutiveObject(nums3)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`Object time: ${timeElapsed} ms`)
 
 console.log("======")
 start = Date.now()
