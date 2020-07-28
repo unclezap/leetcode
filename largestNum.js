@@ -69,6 +69,27 @@ var largestNumber4 = function(nums) {
     return string
 };
 
+var largestNumberLeetcode100 = function(nums) {
+    let strNums = [];
+    
+    for (let num of nums) {
+        strNums.push(num.toString());
+    }
+    
+    strNums.sort(comparator);
+    
+    if (strNums[0] === '0') return '0';
+    
+    return strNums.reduce((max, num) => max + num, '');
+};
+
+const comparator = (a, b) => {
+    let str1 = a + b,
+        str2 = b + a
+    
+    return str1 > str2 ? -1 : 1;
+}
+
 // console.log("=====")
 // start = Date.now()
 // for (u=0;u<100000;u++) {
@@ -117,3 +138,17 @@ for (u=0;u<1000000;u++) {
 end = Date.now()
 timeElapsed = end - start
 console.log(`fourth time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    largestNumberLeetcode100([10,2])
+    largestNumberLeetcode100([3,30,34,5,9])
+    largestNumberLeetcode100([824,938,1399,5607,6973,5703,9609,4398,8247])
+    largestNumberLeetcode100([121,12])
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//leetcode faster by about 2500ms
