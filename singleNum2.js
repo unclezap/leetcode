@@ -42,10 +42,29 @@ var singleNumberHash = function(nums) {
 }
 // console.log(singleNumberHash(nums1))
 
+var singleNumberLeetcode100 = function(nums) {
+    let length = nums.length;
+    let hash = {};
+    for (let i = 0; i < length; i++) {
+        let letter = nums[i];
+        if ( hash[letter] ) {
+            hash[letter] = i + 1;
+        } else {
+            hash[letter] = 1;
+        };
+    };
+    for (let i = 0; i < length; i++) {
+        if ( hash[nums[i]] === 1) {
+            return nums[i];
+        };
+    };
+    return -1;
+};
+
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000000;u++) {
+for (u=0;u<10000000;u++) {
     singleNumberHash(nums1)
 }
 end = Date.now()
@@ -54,9 +73,20 @@ console.log(`hash time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000000;u++) {
+for (u=0;u<10000000;u++) {
     singleNumberMap(nums1)
 }
 end = Date.now()
 timeElapsed = end - start
 console.log(`map time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000000;u++) {
+    singleNumberLeetcode100(nums1)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//map time faster than leetcode by ~800ms
