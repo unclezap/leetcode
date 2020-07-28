@@ -20,37 +20,64 @@ let str5 = "a"
 let str6 = "aab"
 
 var lengthOfLongestSubstring = function(s) {
-
     if (s.length <= 1) {
         return s.length
     }
 
-    let set = new Set()
+    let map = new Map()
     let max = 0
     let submax
-    let i=0
-    let index = 0
+    let start = 0
+    let end = 0
 
-    while (i < s.length) {
-        if (!set.has(s[i])) {
-            set.add(s[i])
-            submax = set.size
+    while (start < s.length && end < s.length) {
+        if (!map.has(s[end])) {
+            map.set(s[end])
+            end++
+            submax = map.size
             if (submax > max) {
                 max = submax
             }
         } else {
-            set.clear()
-            i = index
-            index++
+            map.delete(s[start])
+            start++
         }
-        i++
     }
     return max
-};
+}
+
+// var lengthOfLongestSubstring = function(s) {
+
+//     if (s.length <= 1) {
+//         return s.length
+//     }
+
+//     let set = new Set()
+//     let max = 0
+//     let submax
+//     let i=0
+//     let index = 0
+
+//     while (i < s.length) {
+//         if (!set.has(s[i])) {
+//             set.add(s[i])
+//             submax = set.size
+//             if (submax > max) {
+//                 max = submax
+//             }
+//         } else {
+//             set.clear()
+//             i = index
+//             index++
+//         }
+//         i++
+//     }
+//     return max
+// };
 
 console.log(lengthOfLongestSubstring(str1))
-// console.log(lengthOfLongestSubstring(str2))
-// console.log(lengthOfLongestSubstring(str3))
-// console.log(lengthOfLongestSubstring(str4))
-// console.log(lengthOfLongestSubstring(str5))
-// console.log(lengthOfLongestSubstring(str6))
+console.log(lengthOfLongestSubstring(str2))
+console.log(lengthOfLongestSubstring(str3))
+console.log(lengthOfLongestSubstring(str4))
+console.log(lengthOfLongestSubstring(str5))
+console.log(lengthOfLongestSubstring(str6))
