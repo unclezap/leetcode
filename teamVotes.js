@@ -70,22 +70,136 @@ var rankTeams = function(votes) {
     return answerString
 };
 
-console.log(rankTeams(votes1))
-console.log("======")
-console.log(rankTeams(votes2))
-console.log("======")
-console.log(rankTeams(votes3))
-console.log("======")
-console.log(rankTeams(votes4))
-console.log("======")
-console.log(rankTeams(votes5))
-console.log("======")
-console.log(rankTeams(votes6))
-console.log("======")
-console.log(rankTeams(votes7))
-console.log("======")
-console.log(rankTeams(votes8))
-console.log("======")
-console.log(rankTeams(votes9))
-console.log("======")
-console.log(rankTeams(votes10))
+function rankTeamsLeetcode100(votes) {
+    //const objCache = {};
+    const numOfTeams = votes[0].length;
+    const arrCache = {};
+  
+    for (let i = 0; i < votes.length; i++) {
+      for (let j = 0; j < numOfTeams; j++) {
+  
+        const team = votes[i][j];
+        // console.log(arrCache[team] in arrCache);
+  
+        if (arrCache[team] === undefined) {
+          arrCache[team] = new Array(numOfTeams).fill(0);
+        }
+        arrCache[team][j]++
+  
+        /*
+        if (!(team in objCache)) {
+          objCache[team] = { [j]: 1 }
+        } else {
+          objCache[team][j] ? objCache[team][j]++ : objCache[team][j] = 1;
+        }
+        */
+  
+      }
+    }
+  
+    /*
+    const sorted2 = Object.keys(objCache).sort((a, b) => {
+      for (let i = 0; i < numOfTeams; i++) {
+        // console.log(a, objCache[a])
+        // console.log(b, objCache[b])
+        if (objCache[a][i] && objCache[b][i] && objCache[a][i] !== objCache[b][i]) {
+          console.log(objCache[b][i], objCache[a][i])
+          return objCache[b][i] - objCache[a][i];
+        } else if (!objCache[a][i]) {
+          console.log(objCache[b][i], objCache[a][i])
+          return objCache[b][i] - 0;
+        } else if (!objCache[b][i]) {
+          console.log(objCache[b][i], objCache[a][i])
+          return 0 - objCache[a][i];
+        }
+      }
+      if (a < b) {
+        return -1;
+      } else {
+        return 1;
+      }
+    })
+    console.log(sorted2)
+    */
+  
+    const sorted = Object.keys(arrCache).sort((a, b) => {
+      // console.log(a, arrCache[a])
+      // console.log(b, arrCache[b])
+      for (let i = 0; i < numOfTeams; i++) {
+        if (arrCache[a][i] !== arrCache[b][i]) {
+          // reversed due to larger num = higher placement
+          // console.log(a, b, i, arrCache[a][i], arrCache[b][i])
+          return arrCache[b][i] - arrCache[a][i];
+        }
+      }
+      // console.log(a, b, a < b)
+      if (a < b) {
+        return -1;
+      } else {
+        return 1;
+      }
+    })
+  
+    // console.log(objCache)
+    // console.log(arrCache)
+    // console.log(sorted.join(""))
+    return sorted.join("")
+  };
+
+// console.log(rankTeams(votes1))
+// console.log("======")
+// console.log(rankTeams(votes2))
+// console.log("======")
+// console.log(rankTeams(votes3))
+// console.log("======")
+// console.log(rankTeams(votes4))
+// console.log("======")
+// console.log(rankTeams(votes5))
+// console.log("======")
+// console.log(rankTeams(votes6))
+// console.log("======")
+// console.log(rankTeams(votes7))
+// console.log("======")
+// console.log(rankTeams(votes8))
+// console.log("======")
+// console.log(rankTeams(votes9))
+// console.log("======")
+// console.log(rankTeams(votes10))
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+    rankTeams(votes1)
+    rankTeams(votes2)
+    rankTeams(votes3)
+    rankTeams(votes4)
+    rankTeams(votes5)
+    rankTeams(votes6)
+    rankTeams(votes7)
+    rankTeams(votes8)
+    rankTeams(votes9)
+    rankTeams(votes10)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`zeb time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+    rankTeamsLeetcode100(votes1)
+    rankTeamsLeetcode100(votes2)
+    rankTeamsLeetcode100(votes3)
+    rankTeamsLeetcode100(votes4)
+    rankTeamsLeetcode100(votes5)
+    rankTeamsLeetcode100(votes6)
+    rankTeamsLeetcode100(votes7)
+    rankTeamsLeetcode100(votes8)
+    rankTeamsLeetcode100(votes9)
+    rankTeamsLeetcode100(votes10)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//leetcode time faster by ~400ms

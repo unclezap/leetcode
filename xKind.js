@@ -274,6 +274,111 @@ var hasGroupsSizeXEdited = function(deck) {
     return true
 };
 
+var hasGroupsSizeXLeetcode100 = function(deck) {
+    if (deck.length === 1) {
+        return false;
+    }
+    deck.sort((a, b) => {
+        return a-b;
+    })
+    let arr = [];
+    let cur = deck[0];
+    let num = 1;
+    for (let i = 1; i < deck.length; i ++) {
+        if (deck[i] === cur) {
+            num ++;
+        } else {
+            arr.push(num);
+            num = 1;
+            cur = deck[i];
+        }
+    }
+    arr.push(num);
+    arr = [...new Set(arr)];
+    arr.sort((a, b) => {
+        return a - b;
+    }) 
+    for (let i = 2; i <= arr[0]; i ++) {
+        if (arr.every((el) => {
+            return el%i === 0
+        })) {
+            return true;
+        }
+    }
+    return false;
+};
+
+var hasGroupsSizeXNextBucket = function(deck) {
+    if (deck.length === 1) {
+        return false
+    }
+
+    let hash = {}
+    deck.forEach((number) => {
+        if (hash[number]) {
+            hash[number]++
+        } else {
+            hash[number] = 1
+        }
+    })
+
+    let max
+    let divides
+    let values = Object.values(hash)
+
+    if (Math.min(...values) < 4) {
+        if (Math.min(...values) === 1) {
+            return false
+        }
+        max = 3
+    } else {
+        max = Math.min(...values)/2
+    }
+
+
+    for (let i=2; i <= max; i++) {
+        divides = true
+        for (let j=0; j < values.length; j++) {
+            if (values[j] % i !== 0) {
+                divides = false
+                break
+            }
+        }
+        if (divides) {
+            return true
+        }
+    }
+
+    for (let j=0; j < Object.values(hash).length; j++) {
+        if (values[j] % Math.min(...values) !== 0) {
+            return false
+        }
+    }
+
+    return true
+}
+
+var hasGroupsSizeXThirdBucket = function(deck) {
+    // if (deck.length === 1) return false;
+    
+    let deckObj = {};
+    deck.forEach(card => {
+        if (deckObj[card]) {
+            deckObj[card] += 1;
+        } else {
+            deckObj[card] = 1;
+        }
+    });
+    
+    const objVals = Object.values(deckObj);
+    const maxVal = Math.max(...objVals);
+    
+    for (let i = 2; i <= maxVal; i++) {
+        if (objVals.every(val => val % i === 0)) return true;
+    }
+    return false
+};
+
 console.log("=====")
 start = Date.now()
 for (u=0;u<100000;u++) {
@@ -353,3 +458,53 @@ hashHasGroupsSizeX2WithVariable(deck8)
 end = Date.now()
 timeElapsed = end - start
 console.log(`hash with variable time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+hasGroupsSizeXLeetcode100(deck1)
+hasGroupsSizeXLeetcode100(deck2)
+hasGroupsSizeXLeetcode100(deck3)
+hasGroupsSizeXLeetcode100(deck4)
+hasGroupsSizeXLeetcode100(deck5)
+hasGroupsSizeXLeetcode100(deck6)
+hasGroupsSizeXLeetcode100(deck7)
+hasGroupsSizeXLeetcode100(deck8)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode 100 time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+hasGroupsSizeXNextBucket(deck1)
+hasGroupsSizeXNextBucket(deck2)
+hasGroupsSizeXNextBucket(deck3)
+hasGroupsSizeXNextBucket(deck4)
+hasGroupsSizeXNextBucket(deck5)
+hasGroupsSizeXNextBucket(deck6)
+hasGroupsSizeXNextBucket(deck7)
+hasGroupsSizeXNextBucket(deck8)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode next bucket time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000;u++) {
+hasGroupsSizeXThirdBucket(deck1)
+hasGroupsSizeXThirdBucket(deck2)
+hasGroupsSizeXThirdBucket(deck3)
+hasGroupsSizeXThirdBucket(deck4)
+hasGroupsSizeXThirdBucket(deck5)
+hasGroupsSizeXThirdBucket(deck6)
+hasGroupsSizeXThirdBucket(deck7)
+hasGroupsSizeXThirdBucket(deck8)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode third fastest bucket time: ${timeElapsed} ms`)
+
+//fastest than fastest leetcode time (3rd bucket) by ~200ms
