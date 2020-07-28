@@ -75,9 +75,67 @@ var lengthOfLongestSubstring = function(s) {
 //     return max
 // };
 
-console.log(lengthOfLongestSubstring(str1))
-console.log(lengthOfLongestSubstring(str2))
-console.log(lengthOfLongestSubstring(str3))
-console.log(lengthOfLongestSubstring(str4))
-console.log(lengthOfLongestSubstring(str5))
-console.log(lengthOfLongestSubstring(str6))
+var lengthOfLongestSubstringLeetcode100 = function(s) {
+    let answer = ""
+    let maxlength = 0
+    
+    
+    for(let x = 0; x < s.length; x++){
+        let letter = s[x]
+        let checker = true
+        for(let y = 0; y < answer.length; y++){
+            if(letter === answer[y]){
+                checker = false
+                break
+            }
+        }
+        if(checker === true){
+            answer = answer + letter
+        }
+        else{
+            let indexx = answer.indexOf(letter)
+            answer = answer.substring(indexx+1) + letter
+        }
+        maxlength = Math.max(answer.length, maxlength)
+        
+    }
+    
+    return maxlength
+};
+
+// console.log(lengthOfLongestSubstring(str1))
+// console.log(lengthOfLongestSubstring(str2))
+// console.log(lengthOfLongestSubstring(str3))
+// console.log(lengthOfLongestSubstring(str4))
+// console.log(lengthOfLongestSubstring(str5))
+// console.log(lengthOfLongestSubstring(str6))
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000000;u++) {
+    lengthOfLongestSubstring(str1)
+    lengthOfLongestSubstring(str2)
+    lengthOfLongestSubstring(str3)
+    lengthOfLongestSubstring(str4)
+    lengthOfLongestSubstring(str5)
+    lengthOfLongestSubstring(str6)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`zeb time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000000;u++) {
+    lengthOfLongestSubstring(str1)
+    lengthOfLongestSubstring(str2)
+    lengthOfLongestSubstring(str3)
+    lengthOfLongestSubstring(str4)
+    lengthOfLongestSubstring(str5)
+    lengthOfLongestSubstring(str6)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//faster than leetcode best by 160ms
