@@ -105,6 +105,30 @@ var longestConsecutiveSet = function(nums) {
     return max
 };
 
+var longestConsecutiveLeetcode100 = function(nums) {
+    nums = nums.sort((a,b) => a - b);
+    if(nums.length === 0) {
+        return 0;
+    } else if(nums.length === 1) {
+        return 1;
+    } else {
+        let len = 1;
+        let maxLen = 0;
+        for(let i = 0; i < nums.length-1; i++) {
+            if(nums[i] !== nums[i+1]) {
+                if(nums[i+1] === nums[i] + 1) {
+                    len++;
+                } else {
+                    maxLen = maxLen < len ? len : maxLen;
+                    len = 1;
+                }
+                
+            }
+        }
+        return maxLen < len ? len : maxLen;
+    }
+};
+
 console.log("======")
 start = Date.now()
 for (let i=0; i < 100000; i++) {
@@ -148,6 +172,19 @@ longestConsecutiveSet(nums3)
 end = Date.now()
 timeElapsed = end - start
 console.log(`set time: ${timeElapsed} ms`)
+
+console.log("======")
+start = Date.now()
+for (let i=0; i < 100000; i++) {
+    longestConsecutiveLeetcode100(nums1)
+    longestConsecutiveLeetcode100(nums2)
+    longestConsecutiveLeetcode100(nums3)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//map fastest; leetcode faster by ~40ms
 
 // var longestConsecutive = function(nums) {
 //     // let hash = {nums[0]: 1, nums[0] - 1: 0, nums[0] + 1: 0}
