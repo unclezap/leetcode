@@ -20,8 +20,6 @@ var singleNumberMap = function(nums) {
     return Array.from(map.keys())[0]
 };
 
-
-
 // console.log(singleNumber(nums1))
 
 var singleNumberHash = function(nums) {
