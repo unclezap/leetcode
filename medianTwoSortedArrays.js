@@ -176,3 +176,25 @@ console.log(medianFinderFixed(nums17, nums18))
 // newArray.push(array.shift())
 // console.log(array, "array")
 // console.log(newArray, "newArray")
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000000;u++) {
+    maxProfit(input)
+    maxProfit(input2)
+    maxProfit(input3)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`zeb time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000000;u++) {
+    maxProfit(input)
+    maxProfit(input2)
+    maxProfit(input3)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)

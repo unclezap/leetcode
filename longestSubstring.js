@@ -127,15 +127,16 @@ console.log(`zeb time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<10000000;u++) {
-    lengthOfLongestSubstring(str1)
-    lengthOfLongestSubstring(str2)
-    lengthOfLongestSubstring(str3)
-    lengthOfLongestSubstring(str4)
-    lengthOfLongestSubstring(str5)
-    lengthOfLongestSubstring(str6)
+    lengthOfLongestSubstringLeetcode100(str1)
+    lengthOfLongestSubstringLeetcode100(str2)
+    lengthOfLongestSubstringLeetcode100(str3)
+    lengthOfLongestSubstringLeetcode100(str4)
+    lengthOfLongestSubstringLeetcode100(str5)
+    lengthOfLongestSubstringLeetcode100(str6)
 }
 end = Date.now()
 timeElapsed = end - start
 console.log(`leetcode time: ${timeElapsed} ms`)
 
-//faster than leetcode best by 160ms
+//zeb 26005ms
+//leetcde 5881ms
