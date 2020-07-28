@@ -1,6 +1,24 @@
 // https://leetcode.com/problems/integer-break/
 //legit answer is approx as fast as leetcode best
 
+var integerBreakTest = function(n) {
+    if (n < 4) {
+        return n - 1
+    }
+    
+    let remainder = n % 3
+    
+    if (remainder === 1) {
+        return 4 * 3**(Math.floor(n/3)-1) 
+    } else if (remainder === 2) {
+        return 2*3**Math.floor(n/3)
+    } else {
+        return  3**(n/3)
+    }
+}
+
+// console.log("hi", integerBreakTest(5))
+
 var integerBreakSwitch = function(n) {
     if (n < 4) {
         return n - 1
@@ -15,7 +33,7 @@ var integerBreakSwitch = function(n) {
     }
 };
 
-console.log(integerBreakSwitch(12))
+// console.log(integerBreakSwitch(12))
 
 var integerBreakSwitchNoFloor = function(n) {
     if (n < 4) {
@@ -552,6 +570,141 @@ return 1549681956
 }
 }
 
+//** new attempted fastest */
+
+    const hash = {
+        2:1,
+        3:2,
+        4:4,
+        5:6,
+        6:9,
+        7:12,
+        8:18,
+        9:27,
+        10:36,
+        11:54,
+        12:81,
+        13:108,
+        14:162,
+        15:243,
+        16:324,
+        17:486,
+        18:729,
+        19:972,
+        20:1458,
+        21:2187,
+        22:2916,
+        23:4374,
+        24:6561,
+        25:8748,
+        26:13122,
+        27:19683,
+        28:26244,
+        29:39366,
+        30:59049,
+        31:78732,
+        32:118098,
+        33:177147,
+        34:236196,
+        35:354294,
+        36:531441,
+        37:708588,
+        38:1062882,
+        39:1594323,
+        40:2125764,
+        41:3188646,
+        42:4782969,
+        43:6377292,
+        44:9565938,
+        45:14348907,
+        46:19131876,
+        47:28697814,
+        48:43046721,
+        49:57395628,
+        50:86093442,
+        51:129140163,
+        52:172186884,
+        53:258280326,
+        54:387420489,
+        55:516560652,
+        56:774840978,
+        57:1162261467,
+        58:1549681956
+    }
+
+var integerBreakAllAnswersHash = function(n) {
+
+    return hash[n]
+}
+
+
+
+    const map = new Map([
+        [2, 1],
+        [3, 2],
+        [4, 4],
+        [5, 6],
+        [6, 9],
+        [7, 12],
+        [8, 18],
+        [9, 27],
+        [10, 36],
+        [11, 54],
+        [12, 81],
+        [13, 108],
+        [14, 162],
+        [15, 243],
+        [16, 324],
+        [17, 486],
+        [18, 729],
+        [19, 972],
+        [20, 1458],
+        [21, 2187],
+        [22, 2916],
+        [23, 4374],
+        [24, 6561],
+        [25, 8748],
+        [26, 13122],
+        [27, 19683],
+        [28, 26244],
+        [29, 39366],
+        [30, 59049],
+        [31, 78732],
+        [32, 118098],
+        [33, 177147],
+        [34, 236196],
+        [35, 354294],
+        [36, 531441],
+        [37, 708588],
+        [38, 1062882],
+        [39, 1594323],
+        [40, 2125764],
+        [41, 3188646],
+        [42, 4782969],
+        [43, 6377292],
+        [44, 9565938],
+        [45, 14348907],
+        [46, 19131876],
+        [47, 28697814],
+        [48, 43046721],
+        [49, 57395628],
+        [50, 86093442],
+        [51, 129140163],
+        [52, 172186884],
+        [53, 258280326],
+        [54, 387420489],
+        [55, 516560652],
+        [56, 774840978],
+        [57, 1162261467],
+        [58, 1549681956]
+    ])
+
+var integerBreakAllAnswersMap = function(n) {
+    return map.get(n)
+}
+
+//end new attempted fastest */
+
 var integerBreakClarion = function(n) {
     //maximize number of 3s (such that remainder is NOT 1)
     //then complete with 2s
@@ -595,11 +748,21 @@ var integerBreakLeetcodeBest = function(n) {
     }
 };
 
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    for (let i=2; i < 59; i++) {
+        integerBreakTest(i)
+    }
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`test time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
-    for (let i=2; i < 14; i++) {
+    for (let i=2; i < 59; i++) {
         integerBreakSwitch(i)
     }
 }
@@ -610,7 +773,7 @@ console.log(`switch time: ${timeElapsed} ms`)
 // console.log("=====")
 // start = Date.now()
 // for (u=0;u<100000000;u++) {
-//     for (let i=2; i < 14; i++) {
+//     for (let i=2; i58; i++) {
 //         integerBreakIf(i)
 //     }
 // }
@@ -676,7 +839,7 @@ console.log(`switch time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
-    for (let i=2; i < 14; i++) {
+    for (let i=2; i < 59; i++) {
         integerBreakAllAnswersSwitch(i)
     }
 }
@@ -687,7 +850,29 @@ console.log(`all answers switch time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
-    for (let i=2; i < 14; i++) {
+    for (let i=2; i < 59; i++) {
+        integerBreakAllAnswersHash(i)
+    }
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`all answers hash time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    for (let i=2; i < 59; i++) {
+        integerBreakAllAnswersMap(i)
+    }
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`all answers map time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    for (let i=2; i < 59; i++) {
         integerBreakClarion(i)
     }
 }
@@ -698,7 +883,7 @@ console.log(`clarion time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
-    for (let i=2; i < 14; i++) {
+    for (let i=2; i < 59; i++) {
         integerBreakLeetcodeBest(i)
     }
 }
