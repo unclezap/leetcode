@@ -101,6 +101,23 @@ var groupAnagrams2 = function(strs) {
     return [...map.values()];
 };
 
+var groupAnagramsLeetcode100 = function(strs) {
+    const group = new Map();
+    const sortedStrs = strs.map(str => Array.from(str).sort().join(''));
+    for (let i = 0; i < strs.length; i++){
+        let sorted = sortedStrs[i];
+        let original = strs[i];
+        
+        if (group.has(sorted)){
+            group.set(sorted, [...group.get(sorted), original]);
+        } 
+        else {
+            group.set(sorted, [original]);
+        }
+    }
+    return [...group.values()]
+};
+
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
@@ -120,6 +137,18 @@ for (u=0;u<1000000;u++) {
 end = Date.now()
 timeElapsed = end - start
 console.log(`supposed 90% speed solution time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    groupAnagramsLeetcode100(strs1)
+    groupAnagramsLeetcode100(strs2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//first solution faster than leetcode by ~2300ms
 
 // console.log(groupAnagrams(strs1))
 // console.log(groupAnagrams(strs2))
