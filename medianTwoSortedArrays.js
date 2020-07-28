@@ -151,6 +151,42 @@ function medianFinderFixed(arr1, arr2) {
 //     }
 // }
 
+function findMedianSortedArraysLeetcode100(nums1, nums2) {
+    const len1 = nums1.length;
+    const len2 = nums2.length;
+    const totalLen = len1 + len2;
+    let idx1 = 0;
+    let idx2 = 0;
+    let cur;
+    let last;
+  
+    while (idx1 + idx2 <= totalLen / 2) {
+      if (cur !== undefined) {
+        last = cur;
+      }
+  
+      let el1 = nums1[idx1];
+      let el2 = nums2[idx2];
+  
+      if (idx1 >= len1) {
+        cur = el2;
+        idx2++;
+      } else if (idx2 >= len2) {
+        cur = el1;
+        idx1++;
+      } else if (el1 < el2) {
+        cur = el1;
+        idx1++;
+      } else {
+        idx2++;
+        cur = el2;
+      }
+    }
+  
+  
+    return totalLen % 2 === 0 ? (last + cur) / 2 : cur;
+  };
+
 // console.log(medianFinder(nums1, nums2))
 // console.log(medianFinder(nums3, nums4))
 // console.log(medianFinder(nums5,nums6))
@@ -160,15 +196,15 @@ function medianFinderFixed(arr1, arr2) {
 // console.log(medianFinder(nums13, nums14))
 // console.log(medianFinder(nums15, nums16))
 
-console.log(medianFinderFixed(nums1, nums2))
-console.log(medianFinderFixed(nums3, nums4))
-console.log(medianFinderFixed(nums5,nums6))
-console.log(medianFinderFixed(nums7, nums8))
-console.log(medianFinderFixed(nums9,nums10))
-console.log(medianFinderFixed(nums11, nums12))
-console.log(medianFinderFixed(nums13, nums14))
-console.log(medianFinderFixed(nums15, nums16))
-console.log(medianFinderFixed(nums17, nums18))
+// console.log(medianFinderFixed(nums1, nums2))
+// console.log(medianFinderFixed(nums3, nums4))
+// console.log(medianFinderFixed(nums5,nums6))
+// console.log(medianFinderFixed(nums7, nums8))
+// console.log(medianFinderFixed(nums9,nums10))
+// console.log(medianFinderFixed(nums11, nums12))
+// console.log(medianFinderFixed(nums13, nums14))
+// console.log(medianFinderFixed(nums15, nums16))
+// console.log(medianFinderFixed(nums17, nums18))
 
 // let array = [1,2,3]
 // let newArray = []
@@ -179,10 +215,16 @@ console.log(medianFinderFixed(nums17, nums18))
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<100000000;u++) {
-    maxProfit(input)
-    maxProfit(input2)
-    maxProfit(input3)
+for (u=0;u<1000000;u++) {
+    medianFinderFixed(nums1, nums2)
+    medianFinderFixed(nums3, nums4)
+    medianFinderFixed(nums5,nums6)
+    medianFinderFixed(nums7, nums8)
+    medianFinderFixed(nums9,nums10)
+    medianFinderFixed(nums11, nums12)
+    medianFinderFixed(nums13, nums14)
+    medianFinderFixed(nums15, nums16)
+    medianFinderFixed(nums17, nums18)
 }
 end = Date.now()
 timeElapsed = end - start
@@ -190,11 +232,19 @@ console.log(`zeb time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<100000000;u++) {
-    maxProfit(input)
-    maxProfit(input2)
-    maxProfit(input3)
+for (u=0;u<1000000;u++) {
+    findMedianSortedArraysLeetcode100(nums1, nums2)
+    findMedianSortedArraysLeetcode100(nums3, nums4)
+    findMedianSortedArraysLeetcode100(nums5,nums6)
+    findMedianSortedArraysLeetcode100(nums7, nums8)
+    findMedianSortedArraysLeetcode100(nums9,nums10)
+    findMedianSortedArraysLeetcode100(nums11, nums12)
+    findMedianSortedArraysLeetcode100(nums13, nums14)
+    findMedianSortedArraysLeetcode100(nums15, nums16)
+    findMedianSortedArraysLeetcode100(nums17, nums18)
 }
 end = Date.now()
 timeElapsed = end - start
 console.log(`leetcode time: ${timeElapsed} ms`)
+
+//leetcode better by ~600 ms
