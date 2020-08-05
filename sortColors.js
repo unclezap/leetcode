@@ -98,10 +98,76 @@ var sortColorsLeetcode100 = function(nums) {
     }
 };
 
-// console.log(sortColors(input1))
-// console.log(sortColors(input2))
-// console.log(sortColors(input3))
-// console.log(sortColors(input4))
+var sortColorsLeetcodeSecondBucket = function (nums) {
+    // let start = 0,
+    //   end = nums.length - 1;
+  
+    // const swap = (i, j) => {
+    //   const temp = nums[i];
+    //   nums[i] = nums[j];
+    //   nums[j] = temp;
+    // };
+  
+    // for (let i = 0; i <= end; i++) {
+    //   if (nums[i] === 0) {
+    //     swap(i, start);
+    //     start++;
+    //   }
+    //   if (nums[i] === 2) {
+    //     swap(i--, end);
+    //     end--;
+    //   }
+    // }
+  
+    const hm = {};
+    let i = 0;
+  
+    nums.forEach((num) => (hm[num] = hm[num] + 1 || 1));
+  
+    [0, 1, 2].forEach((num) => {
+      let count = hm[num];
+  
+      while (count) {
+        nums[i++] = num;
+        count--;
+      }
+    });
+    //missing this line in original? Doesn't work without it
+    return nums
+};
+
+var sortColorsLeetcodeThirdBucket = function(nums) {
+    let zeros = []
+    let ones = []
+    let twos = []
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) zeros.push(nums[i])
+        if (nums[i] === 1) ones.push(nums[i])
+        if (nums[i] === 2) twos.push(nums[i])
+    }
+    
+    let length = nums.length
+    
+    for (let j = 0; j < zeros.length; j++) {
+        nums.push(0)
+    }
+    
+    for (let k = 0; k < ones.length; k++) {
+        nums.push(1)
+    }
+    
+    for (let l = 0; l < twos.length; l++) {
+        nums.push(2)
+    }
+    
+    nums.splice(0, length)
+};
+
+// console.log(sortColorsLeetcode(input1))
+// console.log(sortColorsLeetcode(input2))
+// console.log(sortColorsLeetcode(input3))
+// console.log(sortColorsLeetcode(input4))
 
 console.log("=====")
 start = Date.now()
@@ -149,4 +215,30 @@ for (u=0;u<100000000;u++) {
 }
 end = Date.now()
 timeElapsed = end - start
-console.log(`while loop time: ${timeElapsed} ms`)
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+//this one times out
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<100000000;u++) {
+//     sortColorsLeetcodeSecondBucket(input1)
+//     sortColorsLeetcodeSecondBucket(input2)
+//     sortColorsLeetcodeSecondBucket(input3)
+//     sortColorsLeetcodeSecondBucket(input4)
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`leetcode 2nd bucket time: ${timeElapsed} ms`)
+
+//also times out
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<100000000;u++) {
+//     sortColorsLeetcodeThirdBucket(input1)
+//     sortColorsLeetcodeThirdBucket(input2)
+//     sortColorsLeetcodeThirdBucket(input3)
+//     sortColorsLeetcodeThirdBucket(input4)
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`leetcode 3rd bucket time: ${timeElapsed} ms`)
