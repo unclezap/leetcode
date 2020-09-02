@@ -6,6 +6,10 @@ let input3 = "cbbd"
 let input4 = "abcdefedcba"
 let input5 = "abbdefedcba"
 let input6 = "abbdfedcbag"
+let input7 = "abcdef"
+
+// console.log(input3.substr(1,2))
+// console.log("++++")
 
 var longestPalindrome1 = function(s) {
 
@@ -25,6 +29,32 @@ var longestPalindrome1 = function(s) {
           if (boolean) {
               return substring
           }
+      }
+    }
+    
+    return ""
+  };
+
+  var longestPalindrome2 = function(s) {
+
+    let boolean
+    
+    for (let i=s.length; i > 0; i--) {
+      for (let j=0; j <= s.length - i; j++) {
+        boolean = true
+        if (j + i > s.length) {
+            break
+        }
+        for (let k=0; k < Math.floor(i/2); k++) {
+            if (s[j + k] !== s[j + i - k - 1]) {
+                boolean = false
+                break
+            }
+        }
+
+        if (boolean) {
+            return s.substr(j, i)
+        }
       }
     }
     
@@ -68,6 +98,17 @@ var longestPalindrome1 = function(s) {
 //   console.log(longestPalindrome1(input4))
 //   console.log(longestPalindrome1(input5))
 //   console.log(longestPalindrome1(input6))
+//   console.log(longestPalindrome1(input7))
+//   console.log("====")
+
+//   console.log(longestPalindrome2(input1))
+//   console.log(longestPalindrome2(input2))
+//   console.log(longestPalindrome2(input3))
+//   console.log(longestPalindrome2(input4))
+//   console.log(longestPalindrome2(input5))
+//   console.log(longestPalindrome2(input6))
+//   console.log(longestPalindrome2(input7))
+//   console.log("====")
 
 //   console.log(longestPalindromeLeetcode100(input1))
 //   console.log(longestPalindromeLeetcode100(input2))
@@ -75,16 +116,31 @@ var longestPalindrome1 = function(s) {
 //   console.log(longestPalindromeLeetcode100(input4))
 //   console.log(longestPalindromeLeetcode100(input5))
 //   console.log(longestPalindromeLeetcode100(input6))
+//   console.log(longestPalindromeLeetcode100(input7))
+
+// console.log("=====")
+// start = Date.now()
+// for (u=0;u<1000000;u++) {
+//   longestPalindrome1(input1)
+//   longestPalindrome1(input2)
+//   longestPalindrome1(input3)
+//   longestPalindrome1(input4)
+//   longestPalindrome1(input5)
+//   longestPalindrome1(input6)
+// }
+// end = Date.now()
+// timeElapsed = end - start
+// console.log(`zeb time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000000;u++) {
-  longestPalindrome1(input1)
-  longestPalindrome1(input2)
-  longestPalindrome1(input3)
-  longestPalindrome1(input4)
-  longestPalindrome1(input5)
-  longestPalindrome1(input6)
+for (u=0;u<10000000;u++) {
+  longestPalindrome2(input1)
+  longestPalindrome2(input2)
+  longestPalindrome2(input3)
+  longestPalindrome2(input4)
+  longestPalindrome2(input5)
+  longestPalindrome2(input6)
 }
 end = Date.now()
 timeElapsed = end - start
@@ -92,7 +148,7 @@ console.log(`zeb time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000000;u++) {
+for (u=0;u<10000000;u++) {
   longestPalindromeLeetcode100(input1)
   longestPalindromeLeetcode100(input2)
   longestPalindromeLeetcode100(input3)
