@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/longest-palindromic-substring/submissions/
+// https://leetcode.com/problems/longest-palindromic-substring/submissions/
 
 let input1 = ""
 let input2 = "babad"
