@@ -247,7 +247,7 @@ const closeMap = {
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000;u++) {
+for (u=0;u<1000000;u++) {
 isValid(s1)
 isValid(s2)
 isValid(s3)
@@ -256,11 +256,11 @@ isValid(s5)
 }
 end = Date.now()
 timeElapsed = end - start
-console.log(`min/max time: ${timeElapsed} ms`)
+console.log(`zeb1 time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000;u++) {
+for (u=0;u<1000000;u++) {
 isValid2(s1)
 isValid2(s2)
 isValid2(s3)
@@ -269,11 +269,11 @@ isValid2(s5)
 }
 end = Date.now()
 timeElapsed = end - start
-console.log(`min/max time: ${timeElapsed} ms`)
+console.log(`zeb2 time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<1000;u++) {
+for (u=0;u<1000000;u++) {
 isValid3(s1)
 isValid3(s2)
 isValid3(s3)
@@ -282,4 +282,69 @@ isValid3(s5)
 }
 end = Date.now()
 timeElapsed = end - start
-console.log(`min/max time: ${timeElapsed} ms`)
+console.log(`zeb3 time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+isValidLeetcode100(s1)
+isValidLeetcode100(s2)
+isValidLeetcode100(s3)
+isValidLeetcode100(s4)
+isValidLeetcode100(s5)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+isValidLeetcodeSecond(s1)
+isValidLeetcodeSecond(s2)
+isValidLeetcodeSecond(s3)
+isValidLeetcodeSecond(s4)
+isValidLeetcodeSecond(s5)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode 2nd time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+isValidLeetcodeThird(s1)
+isValidLeetcodeThird(s2)
+isValidLeetcodeThird(s3)
+isValidLeetcodeThird(s4)
+isValidLeetcodeThird(s5)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode 3rd time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+isValidLeetcodeFourth(s1)
+isValidLeetcodeFourth(s2)
+isValidLeetcodeFourth(s3)
+isValidLeetcodeFourth(s4)
+isValidLeetcodeFourth(s5)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode 4th time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+isValidLeetcodeFifth(s1)
+isValidLeetcodeFifth(s2)
+isValidLeetcodeFifth(s3)
+isValidLeetcodeFifth(s4)
+isValidLeetcodeFifth(s5)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode 5th time: ${timeElapsed} ms`)
