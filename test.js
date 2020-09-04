@@ -1,4 +1,6 @@
-console.log(1 == "1.0")
+console.log(1 ^ -1)
+
+// console.log(1 == "1.0")
 
 // let string = "abcd"
 // // console.log(string.slice(1, 3))

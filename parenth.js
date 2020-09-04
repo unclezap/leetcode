@@ -107,6 +107,33 @@ var isValid3 = function(s) {
     return false
 }
 
+var isValid4 = function(s) {
+    let hashValues = {
+        "(" : 1,
+        ")" : -1,
+        "{" : 2,
+        "}" : -2,
+        "[" : 3,
+        "]" : -3
+    }
+
+    let lastBracket = []
+
+    for (let i=0; i < s.length; i++) {
+        if (hashValues[s[i]] > 0) {
+            lastBracket.push(s[i])
+        } else {
+            if (hashValues[s[i]] + hashValues[lastBracket.pop()] !== 0) {
+                return false
+            }
+        }
+    }
+    if (lastBracket.length === 0) {
+        return true
+    }
+    return false
+}
+
 var isValidLeetcode100 = function(s) {
     const stack = [];
     s = s.split('');
