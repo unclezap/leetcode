@@ -57,6 +57,64 @@ var myAtoi = function(str) {
     
 };
 
+var myAtoiSecond = function(str) {
+    let numHash = {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+        "8": true,
+        "9": true
+    }
+    
+    let i=0
+    while (str[i] === " ") {
+        i++
+    }
+    
+    if (str[i] === "-" || str[i] === "+" || numHash[str[i]]) {
+        let sign = 1
+    
+        if (str[i] === "-") {
+            sign = -1
+            i++
+        } else if (str[i] === "+") {
+            i++
+        }
+
+        let ans = sign * str.slice(i, str.length)
+
+        if (ans > 2147483647) {
+            return 2147483647
+        } else if (ans < -2147483648) {
+            return -2147483648
+        } else if (isNaN(ans)) {
+            let j=i
+            while (numHash[str[j]]) {
+                j++
+            }
+            ans = sign * str.slice(i, j)
+            if (ans > 2147483647) {
+                return 2147483647
+            } else if (ans < -2147483648) {
+                return -2147483648
+            } else {
+                return ans
+            }
+        } else {
+            return ans
+        }
+    
+    } else {
+        return 0
+    }
+    
+};
+
 var myAtoiLeetcode100 = function(str) {
     const num = parseInt(str.replace(/ /,''), 10) || 0;
     if(num < -2147483648) return -2147483648;
@@ -136,6 +194,13 @@ var myAtoiLeetcodeFourth = function(str) {
     : (num > 2147483647 ? 2147483647 : num); 
 };
 
+// console.log(myAtoiSecond(input1))
+// console.log(myAtoiSecond(input2))
+// console.log(myAtoiSecond(input3))
+// console.log(myAtoiSecond(input4))
+// console.log(myAtoiSecond(input5))
+// console.log(myAtoiSecond(input6))
+
 console.log("=====")
 start = Date.now()
 for (u=0;u<1000000;u++) {
@@ -149,6 +214,20 @@ for (u=0;u<1000000;u++) {
 end = Date.now()
 timeElapsed = end - start
 console.log(`zeb time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<1000000;u++) {
+    myAtoiSecond(input1)
+    myAtoiSecond(input2)
+    myAtoiSecond(input3)
+    myAtoiSecond(input4)
+    myAtoiSecond(input5)
+    myAtoiSecond(input6)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`zeb 2nd time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
