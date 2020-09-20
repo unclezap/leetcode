@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/max-points-on-a-line/
+
 
 let input3 = [[0,0],[1,1],[1,-1]]
 let input4 = [[4,0],[4,-1],[4,5]]
@@ -58,6 +60,63 @@ let input8 = [[-54,-297],[30,53],[54,153]]
 let input9 = [[0,0],[94911151,94911150],[94911152,94911151]]
 let input10 = [[0,0],[51,50],[52,51]]
 
+// var maxPoints = function(points) {
+//     if (points.length <= 2) {
+//         return points.length
+//     }
+    
+//     let max = 1
+//     let count = 1
+
+//     for (let i=0; i < points.length - 1; i++) {
+//         for (let j=i+1; j < points.length; j++) {
+//             let slope = (points[i][1] - points[j][1])/(points[i][0] - points[j][0])
+//             let intercept = points[i][1] - slope*points[i][0]
+//             // slope = slope.toFixed(13)
+//             // intercept = intercept.toFixed(13)
+//             count = 2
+
+//             // console.log("slo", slope, "int", intercept)
+//             if (slope === Infinity || slope === -Infinity) {
+//                 for (let k=0; k < points.length; k++) {
+//                     if (k !== i && k !== j) {
+//                         if (points[k][0] === points[i][0]) {
+//                             count++
+//                         }
+//                     }
+//                 }
+//             } else if (isNaN(slope)) {
+//                 for (let k=0; k < points.length; k++) {
+//                     if (k !== i && k !== j) {
+//                         if (points[k][0] === points[i][0] && points[k][1] === points[i][1]) {
+//                             count++
+//                         }
+//                     }
+//                 }
+//             } else {
+//                 for (let k=0; k < points.length; k++) {
+//                     if (k !== i && k !== j) {
+//                         // console.log("calc", points[k][1], "=", slope * points[k][0] + intercept)
+//                         if (points[k][1] === (slope * points[k][0] + intercept) && points[j][1] === (slope * points[j][0] + intercept) && points[i][1] === (slope * points[i][0] + intercept)) {
+//                             // console.log(points[i], points[j], points[k])
+//                             console.log(i,j,k, "calc", points[k][1], "=", slope * points[k][0] + intercept)
+//                             console.log("slope", slope, "intercept", intercept)
+//                             console.log("========")
+//                             count++
+//                         }
+//                     }
+//                 }
+//             }
+            
+//             if (count > max) {
+//                 max = count
+//             }
+//         }
+//     }
+    
+//     return max
+// };
+
 var maxPoints = function(points) {
     if (points.length <= 2) {
         return points.length
@@ -68,13 +127,10 @@ var maxPoints = function(points) {
 
     for (let i=0; i < points.length - 1; i++) {
         for (let j=i+1; j < points.length; j++) {
-            let slope = (points[i][1] - points[j][1])/(points[i][0] - points[j][0])
+            let slope = 1000000.0 *(points[i][1] - points[j][1])/(points[i][0] - points[j][0])
             let intercept = points[i][1] - slope*points[i][0]
-            // slope = slope.toFixed(13)
-            // intercept = intercept.toFixed(13)
             count = 2
 
-            // console.log("slo", slope, "int", intercept)
             if (slope === Infinity || slope === -Infinity) {
                 for (let k=0; k < points.length; k++) {
                     if (k !== i && k !== j) {
@@ -94,12 +150,9 @@ var maxPoints = function(points) {
             } else {
                 for (let k=0; k < points.length; k++) {
                     if (k !== i && k !== j) {
-                        // console.log("calc", points[k][1], "=", slope * points[k][0] + intercept)
-                        if (points[k][1] === (slope * points[k][0] + intercept) && points[j][1] === (slope * points[j][0] + intercept) && points[i][1] === (slope * points[i][0] + intercept)) {
-                            // console.log(points[i], points[j], points[k])
-                            console.log(i,j,k, "calc", points[k][1], "=", slope * points[k][0] + intercept)
-                            console.log("slope", slope, "intercept", intercept)
-                            console.log("========")
+                        console.log("int",intercept)
+                        console.log(points[k][1] , (slope * points[k][0] + intercept))
+                        if (points[k][1] === (slope * points[k][0] + intercept)) {
                             count++
                         }
                     }
