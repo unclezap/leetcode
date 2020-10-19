@@ -33,3 +33,9 @@ var divide = function(dividend, divisor) {
 
     return count >= 2147483648 || count < -2147483648 ? 2147483647 : count
 };
+
+var divide = function(dividend, divisor) {
+    result = Math.trunc(dividend/divisor)
+
+    return result >= 2147483648 || result < -2147483648 ? 2147483647 : result
+};
