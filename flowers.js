@@ -41,3 +41,41 @@ var canPlaceFlowers = function(flowerbed, n) {
     
     return true
 };
+
+var canPlaceFlowersLeetcode100 = function(flowerbed, n) {
+    let i = 0;
+    let count = 0;
+    for (let i = 0; i < flowerbed.length; i++) {
+        if (flowerbed[i - 1] != 1 && flowerbed[i + 1] != 1 && flowerbed[i] != 1) {
+                flowerbed[i] = 1; 
+                count++;
+        }
+    }
+    return count >= n;
+};
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000000;u++) {
+    canPlaceFlowers([0],1)
+    canPlaceFlowers([1,0,0,0,1],1)
+    canPlaceFlowers([1,0,0,0,1],2)
+    canPlaceFlowers([1,0,0,0,1,0,0],2)
+    canPlaceFlowers([1,0,0,1,0,0,0],2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`zeb time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<100000000;u++) {
+    canPlaceFlowersLeetcode100([0],1)
+    canPlaceFlowersLeetcode100([1,0,0,0,1],1)
+    canPlaceFlowersLeetcode100([1,0,0,0,1],2)
+    canPlaceFlowersLeetcode100([1,0,0,0,1,0,0],2)
+    canPlaceFlowersLeetcode100([1,0,0,1,0,0,0],2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`leetcode time: ${timeElapsed} ms`)
