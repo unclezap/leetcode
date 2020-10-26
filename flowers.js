@@ -3,6 +3,18 @@
 var canPlaceFlowers = function(flowerbed, n) {
     let index = 0
     
+    if (flowerbed.length === 1) {
+        if (flowerbed[0] === 1 && n === 1) {
+            return false
+        }
+        return true
+    }
+    
+    if (flowerbed[flowerbed.length - 1] === 0 && flowerbed[flowerbed.length - 2] === 0) {
+        n--
+        flowerbed = flowerbed.slice(0, flowerbed.length-1)
+    }
+    
     if (flowerbed[0] === 0 && flowerbed[1] === 0) {
         n--
         index++
@@ -23,11 +35,6 @@ var canPlaceFlowers = function(flowerbed, n) {
         }
         
         if (!works) {
-            if (n === 1 && flowerbed[flowerbed.length - 1] === 0 && flowerbed[flowerbed.length - 2] === 0) {
-                console.log(flowerbed)
-                return true
-            }
-            
             return false
         }
     }
