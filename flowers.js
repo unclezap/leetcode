@@ -56,7 +56,7 @@ var canPlaceFlowersLeetcode100 = function(flowerbed, n) {
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<100000000;u++) {
+for (u=0;u<1000000;u++) {
     canPlaceFlowers([0],1)
     canPlaceFlowers([1,0,0,0,1],1)
     canPlaceFlowers([1,0,0,0,1],2)
@@ -69,7 +69,7 @@ console.log(`zeb time: ${timeElapsed} ms`)
 
 console.log("=====")
 start = Date.now()
-for (u=0;u<100000000;u++) {
+for (u=0;u<1000000;u++) {
     canPlaceFlowersLeetcode100([0],1)
     canPlaceFlowersLeetcode100([1,0,0,0,1],1)
     canPlaceFlowersLeetcode100([1,0,0,0,1],2)
