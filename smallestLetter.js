@@ -55,6 +55,7 @@ var nextGreatestLetter = function(letters, target) {
       }
   };
 
+  //the reason binary search is faster is that the characters are sorted, d'oh
   var nextGreatestLetterLeetcode100 = function(letters, target) {
     const index = binarySearch(letters, target)
     return letters[index]
