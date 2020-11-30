@@ -7,6 +7,9 @@ class Shop
   end
 end
 
-x = Shop.new
+# x = Shop.new
 
-x.talk
+# x.talk
+
+puts Shop.instance
+puts Shop.instance.object_id
