@@ -9,19 +9,26 @@ class StartMenu
         menu_choice = gets.strip.downcase
 
         if menu_choice[0] == "1"
-            puts "playing!"
-        elsif menu_choice[0] = "q"
+            puts `clear`
+            Game.play
+        elsif menu_choice[0] == "q"
             puts "goodbye"
         else
-            # puts "let's try that again"
-            # sleep(3)
-            # StartMenu.run
+            puts "let's try that again"
+            sleep(2)
+            StartMenu.run
         end
     end
 end
 
 class Game
-
+    def self.play
+        puts "   |   |   "
+        puts "-----------"
+        puts "   |   |   "
+        puts "-----------"
+        puts "   |   |   "
+    end
 end
 
 StartMenu.run
