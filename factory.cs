@@ -10,7 +10,7 @@ public class Traveler
 
     public static Traveler From Defaults ()
     {
-        var traveler = new Customer { Status = "unapproved", Name = "Travler"}
+        var traveler = new Customer { Status = "unapproved", Name = "Traveler"}
         traveler.Orders = new List<Order> ();
         return traveler;
     }
@@ -23,3 +23,24 @@ public class Traveler
         return traveler
     }
 }
+
+public class TravelerFactory
+{
+    public Traveler FromDefaults ()
+    {
+        var traveler = new Traveler { Status = "unapproved", Name = "Traveler"};
+        traveler.Orders = new List<Order> ();
+        return traveler;
+    }
+
+    public Traveler FromExisting (IDictionary values)
+
+    {
+    var traveler = new Traveler ();
+
+    return traveler
+    }
+}
+
+var travelerFactory = new TravlerFactory();
+var travler = travelerFactory.FromDefaults();
