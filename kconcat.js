@@ -1,5 +1,17 @@
 // https://leetcode.com/problems/k-concatenation-maximum-sum/
 
+//going to use Kadane
+var kConcatenationMaxSum = function(arr, k) {
+    if (arr.length === 0) {
+        return 0
+    }
+    
+    for (let i=0;i<k;i++) {
+        arr.concat(...arr)
+    }
+    
+    
+}
 
 //still working on this
 var kConcatenationMaxSum = function(arr, k) {
