@@ -6,32 +6,52 @@ var kConcatenationMaxSum = function(arr, k) {
         return 0
     }
     
-    if (k > 1) {
-        arr = arr.concat(arr)
+    let totalStartSum = 0
+    let maxStartSum = 0
+    
+    for (let i=arr.length - 1; i>=0; i--) {
+        totalStartSum += arr[i]        
+        
+        if (totalStartSum > maxStartSum) {
+            maxStartSum = totalStartSum
+        }
+    }
+    
+    let totalEndSum = 0
+    let maxEndSum = 0
+    
+    for (let i=0; i< arr.length; i++) {
+        totalEndSum += arr[i]
+        
+        if (totalEndSum > maxEndSum) {
+            maxEndSum = totalEndSum
+        }
     }
     
     let currentSum = 0
     let maxSum = 0
-    let arrSum = 0
 
+    if (k > 1) {
+        arr = arr.concat(arr)
+    }
+    
     for (let i=0; i< arr.length; i++) {
         if (currentSum <=0) {
             currentSum = arr[i]
         } else {
             currentSum += arr[i]
         }
-        
+
         if (currentSum > maxSum) {
             maxSum = currentSum
         }
-        
-        arrSum += arr[i]
     }
     
-    if (maxSum === arrSum) {
-        return k*maxSum/2
-    } else {
+    console.log(maxStartSum, totalStartSum, maxEndSum, maxSum)
+    if (k <= 2) {
         return maxSum
+    } else {
+        return Math.max(maxStartSum + Math.max((k-2)*totalStartSum,0) + maxEndSum, maxSum) % (10**9 + 7)
     }
 }
 
