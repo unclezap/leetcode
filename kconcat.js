@@ -6,11 +6,33 @@ var kConcatenationMaxSum = function(arr, k) {
         return 0
     }
     
-    for (let i=0;i<k;i++) {
-        arr.concat(...arr)
+    if (k > 1) {
+        arr = arr.concat(arr)
     }
     
+    let currentSum = 0
+    let maxSum = 0
+    let arrSum = 0
+
+    for (let i=0; i< arr.length; i++) {
+        if (currentSum <=0) {
+            currentSum = arr[i]
+        } else {
+            currentSum += arr[i]
+        }
+        
+        if (currentSum > maxSum) {
+            maxSum = currentSum
+        }
+        
+        arrSum += arr[i]
+    }
     
+    if (maxSum === arrSum) {
+        return k*maxSum/2
+    } else {
+        return maxSum
+    }
 }
 
 //still working on this
