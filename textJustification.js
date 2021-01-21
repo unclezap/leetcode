@@ -10,9 +10,7 @@ var fullJustify = function(words, maxWidth) {
             count += words[i].length + 1
             output[outputIndex].push(words[i])
         } else {
-            // console.log(maxWidth, count, output[outputIndex].length)
             count = maxWidth - count + 1
-            // console.log(count)
             
             let pointer = 0
             while (count > 0) {
@@ -25,20 +23,21 @@ var fullJustify = function(words, maxWidth) {
             }
             
             count = words[i].length + 1
-            // console.log(count)
             outputIndex++
-            output[outputIndex].push(words[i])
+            output[outputIndex] = [words[i]]
         }
         
     }
     
-    while (output[output.length - 1].length < 16) {
-        output[output.length - 1] += ' '
+    while (count <= maxWidth) {
+        output[output.length - 1][output[output.length - 1].length - 1] += ' '
+        count++
     }
     
-//     for (let i=0;i<output.length;i++) {
-//         output[i] = output[i].join(' ')
-//     }
+    for (let i=0;i<output.length;i++) {
+        output[i] = output[i].join(' ')
+    }
     
     return output
-};    
+};
+
