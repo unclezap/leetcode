@@ -34,13 +34,17 @@ var largestPalindrome = function(n) {
             }
 
             if (product === reverse) {
-                return product % 1337
+                return product
             }
             
             firstDif--
             secondDif++
         }
     }
+}
+
+for (let i=1; i<8; i++) {
+    console.log(largestPalindrome(i))
 }
 
 //LOLOLOLOLOLOL
