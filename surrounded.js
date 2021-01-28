@@ -80,9 +80,80 @@ var solve = function(board) {
             }
         }
     }
+
+    return board
 };
 
+const solveLeetcode100=board=>{
+    if(board===null || board.length===0 || board[0].length===0)  return;
+    let rows=board.length, cols=board[0].length;
+    
+    let mark=(i,j)=>{
+        if(i<0 || i>=rows || j<0 || j>=cols || board[i][j] !== 'O')  return;
+        board[i][j] = 'A';
+        
+        mark(i-1, j);
+        mark(i+1, j);
+        mark(i, j-1);
+        mark(i, j+1);
+    };
+    
+    for(let i=0;i<rows;i++){
+        for(let j=0;j<cols;j++){
+            if(i===0 || i===rows-1 || j===0 || j===cols-1){
+                mark(i,j);
+            }
+        }
+    }
+    
+    for(let i=0;i<rows;i++){
+        for(let j=0;j<cols;j++){
+            // if(board[i][j] === 'O')  board[i][j] = 'X';
+            if(board[i][j] === 'A')  {board[i][j] = 'O';continue;}
+            board[i][j] = 'X'
+        }
+    }
 
+    return board
+};
+
+var solveLeetcodeSecond = function(board) {
+    if (board.length === 0)
+      return []
+    for(let col = 0; col < board[0].length; col++) {
+      if (board[0][col] === 'O')
+        dfs(0, col)
+      if (board[board.length-1][col] === 'O')
+        dfs(board.length-1, col)
+    }
+    for(let row = 0; row < board.length; row++) {
+      if (board[row][0] === 'O')
+        dfs(row, 0)
+      if (board[row][board[row].length-1] === 'O')
+        dfs(row, board[row].length-1)
+    }
+    
+    for(let row = 0; row < board.length; row++) {
+      for(let col = 0; col < board[0].length; col++) {
+        if (board[row][col] === 'O')
+          board[row][col] = 'X'
+        else if (board[row][col] === '*')
+          board[row][col] = 'O'
+      }
+    }
+    return board
+    function dfs(row, col) {
+      if (row < 0 || col < 0 || row === board.length || col === board[0].length)
+        return
+      if (board[row][col] === 'O') {
+        board[row][col] = '*'
+        dfs(row+1, col)
+        dfs(row-1, col)
+        dfs(row, col+1)
+        dfs(row, col-1)
+      }
+    }
+  };
 
 // // var solve = function(board) {
     
@@ -309,23 +380,55 @@ var solve = function(board) {
 //     }
 // };
 
-// ["X","O","X","X","O","O","X","O","X","X","X","X","O","X","O","X","X","X","X","O"],
-// ["O","X","O","O","X","O","X","O","X","X","X","X","X","X","O","X","X","O","X","X"],
-// ["X","O","O","X","O","X","O","X","O","X","X","O","X","X","X","O","O","X","X","O"],
-// ["O","X","X","O","O","X","X","O","X","X","X","X","O","O","X","O","O","O","X","X"],
-// ["X","X","O","X","O","O","X","O","O","O","X","O","X","O","X","X","X","O","X","X"],
-// ["O","O","O","O","X","O","X","X","O","O","X","O","O","X","O","X","X","X","X","O"],
-// ["X","O","X","X","X","X","O","X","X","O","X","X","O","X","X","X","O","O","X","O"],
-// ["O","X","X","O","O","O","X","O","O","X","O","X","X","X","O","O","X","X","O","X"],
-// ["O","O","O","O","X","X","O","X","O","O","X","X","O","X","O","O","X","O","X","O"],
-// ["O","O","X","X","X","O","X","O","X","O","X","X","X","O","X","X","X","X","X","O"],
-// ["X","O","X","O","X","X","X","O","X","X","X","O","X","O","X","O","X","O","X","X"],
-// ["O","O","X","X","X","X","O","X","X","X","O","X","O","O","O","X","X","X","O","X"],
-// ["X","X","X","O","O","O","O","O","X","X","O","X","X","X","O","X","X","X","X","O"],
-// ["O","O","X","X","X","O","O","X","O","O","X","X","X","X","X","X","O","X","X","O"],
-// ["O","O","O","X","X","O","O","O","O","X","X","O","X","O","O","X","X","X","X","X"],
-// ["O","X","X","X","O","X","O","O","X","X","X","X","X","O","X","X","X","O","O","X"],
-// ["O","O","O","O","X","X","X","X","O","O","O","O","X","O","O","O","O","X","X","O"],
-// ["X","X","X","X","X","X","X","X","X","X","O","X","X","O","X","X","X","X","X","X"],
-// ["O","X","O","O","X","O","O","X","X","X","X","X","X","O","X","O","X","X","X","X"],
-// ["O","O","X","X","X","X","X","O","O","O","X","X","X","X","X","X","O","X","X","O"]]
+let board = [["X","O","X","X","O","O","X","O","X","X","X","X","O","X","O","X","X","X","X","O"],
+["O","X","O","O","X","O","X","O","X","X","X","X","X","X","O","X","X","O","X","X"],
+["X","O","O","X","O","X","O","X","O","X","X","O","X","X","X","O","O","X","X","O"],
+["O","X","X","O","O","X","X","O","X","X","X","X","O","O","X","O","O","O","X","X"],
+["X","X","O","X","O","O","X","O","O","O","X","O","X","O","X","X","X","O","X","X"],
+["O","O","O","O","X","O","X","X","O","O","X","O","O","X","O","X","X","X","X","O"],
+["X","O","X","X","X","X","O","X","X","O","X","X","O","X","X","X","O","O","X","O"],
+["O","X","X","O","O","O","X","O","O","X","O","X","X","X","O","O","X","X","O","X"],
+["O","O","O","O","X","X","O","X","O","O","X","X","O","X","O","O","X","O","X","O"],
+["O","O","X","X","X","O","X","O","X","O","X","X","X","O","X","X","X","X","X","O"],
+["X","O","X","O","X","X","X","O","X","X","X","O","X","O","X","O","X","O","X","X"],
+["O","O","X","X","X","X","O","X","X","X","O","X","O","O","O","X","X","X","O","X"],
+["X","X","X","O","O","O","O","O","X","X","O","X","X","X","O","X","X","X","X","O"],
+["O","O","X","X","X","O","O","X","O","O","X","X","X","X","X","X","O","X","X","O"],
+["O","O","O","X","X","O","O","O","O","X","X","O","X","O","O","X","X","X","X","X"],
+["O","X","X","X","O","X","O","O","X","X","X","X","X","O","X","X","X","O","O","X"],
+["O","O","O","O","X","X","X","X","O","O","O","O","X","O","O","O","O","X","X","O"],
+["X","X","X","X","X","X","X","X","X","X","O","X","X","O","X","X","X","X","X","X"],
+["O","X","O","O","X","O","O","X","X","X","X","X","X","O","X","O","X","X","X","X"],
+["O","O","X","X","X","X","X","O","O","O","X","X","X","X","X","X","O","X","X","O"]]
+
+let board2 = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000;u++) {
+    solve(board)
+    solve(board2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`min/max time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000;u++) {
+    solveLeetcode100(board)
+    solveLeetcode100(board2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`min/max time: ${timeElapsed} ms`)
+
+console.log("=====")
+start = Date.now()
+for (u=0;u<10000;u++) {
+    solveLeetcodeSecond(board)
+    solveLeetcodeSecond(board2)
+}
+end = Date.now()
+timeElapsed = end - start
+console.log(`min/max time: ${timeElapsed} ms`)
