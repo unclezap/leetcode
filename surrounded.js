@@ -406,7 +406,7 @@ let board2 = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X"
 console.log("=====")
 start = Date.now()
 for (u=0;u<10000;u++) {
-    solve(board)
+    // solve(board)
     solve(board2)
 }
 end = Date.now()
@@ -416,7 +416,7 @@ console.log(`min/max time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<10000;u++) {
-    solveLeetcode100(board)
+    // solveLeetcode100(board)
     solveLeetcode100(board2)
 }
 end = Date.now()
@@ -426,7 +426,7 @@ console.log(`min/max time: ${timeElapsed} ms`)
 console.log("=====")
 start = Date.now()
 for (u=0;u<10000;u++) {
-    solveLeetcodeSecond(board)
+    // solveLeetcodeSecond(board)
     solveLeetcodeSecond(board2)
 }
 end = Date.now()
