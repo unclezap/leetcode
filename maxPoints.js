@@ -168,6 +168,28 @@ var maxPoints = function(points) {
     return max
 };
 
+var countConsistentStrings2 = function(allowed, words) {
+    
+    let set = new Set(allowed.split(''))
+    
+    let count = 0
+    
+    for (let i=0;i<words.length;i++) {
+        let consistent = true
+        for (let j=0;j<words[i].length;j++) {
+            if (!set.has(words[i][j])) {
+                consistent = false
+                break
+            }
+        }
+        if (consistent) {
+            count++
+        }
+    }
+    
+    return count
+};
+
 cconst maxPointsLeetcode100 = function(points) {
     const n = points.length;
     let max = 0;
