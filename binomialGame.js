@@ -27,15 +27,23 @@ function binomialCalculator(array) {
     }
 }
 
-console.log(binomialCalculator([0.80,0.68,0.66,0.72,0.84,0.5,0.69,0.44,0.33,0.33,0.59,0.77]))
+// console.log(binomialCalculator([0.80,0.68,0.66,0.72,0.84,0.5,0.69,0.44,0.33,0.33,0.59,0.77]))
+// console.log(binomialCalculator([0.68,0.66,0.72,0.84,0.5,0.69,0.44,0.33,0.33,0.59,0.77]))
+// console.log(binomialCalculator([0.80,0.68,0.66,0.72,0.84,0.5,0.69]))
+// console.log(binomialCalculator([0.68,0.66,0.72]))
+console.log(binomialCalculator([.68,.65,.72]))
+// console.log(binomialCalculator([0.44,0.33,0.33]))
+// console.log(binomialCalculator([0.59,0.77]))
 
 console.log('============')
 console.log('ESPN')
 
-console.log(binomialCalculator([0.772,0.654,0.551,0.62,0.677,0.556,0.638,0.489,0.418,0.348,0.666,0.695]))
+// console.log(binomialCalculator([0.772,0.654,0.551,0.62,0.677,0.556,0.638,0.489,0.418,0.348,0.666,0.695]))
+// console.log(binomialCalculator([0.654,0.551,0.62,0.677,0.556,0.638,0.489,0.418,0.348,0.666,0.695]))
+// console.log(binomialCalculator([0.772,0.654,0.551,0.62,0.677,0.556,0.638]))
+// console.log(binomialCalculator([0.654,0.551,0.62]))
+console.log(binomialCalculator([.658,.55,.629]))
+// console.log(binomialCalculator([0.489,0.418,0.348]))
+// console.log(binomialCalculator([0.556,0.638]))
 
-console.log('============')
-
-for(let i=12;i>=0;i--) {
-    console.log(i, "-", 12-i, ":", (10+i)/36)
-}
+// console.log(7*(.772+.654+.551+.62+.677+.556+.638)/7)
