@@ -17,7 +17,7 @@ function binomialCalculator(array) {
 
     }
 
-    // console.log(hash)
+    console.log(hash)
 
     let perc = 0
 
@@ -96,7 +96,9 @@ function hopper(hashHome, hashOpp, gmsBehind, opp) {
 
 }
 
-console.log(binomialCalculator([0.612, 0.256, 0.032]))
+console.log(binomialCalculator([0.35, 0.35, 0.4, 0.4]))
+// console.log(binomialCalculator([]))
+// console.log(binomialCalculator([0.612, 0.256, 0.032]))
 // console.log(binomialCalculator([0.631, 0.422, 0.467]))
 // console.log(binomialCalculator([0.31, 0.44, 0.45]))
 // console.log(binomialCalculator([0.454, 0.558, 0.293]))
@@ -115,32 +117,36 @@ console.log(binomialCalculator([0.612, 0.256, 0.032]))
 // console.log('========')
 // console.log('ESPN')
 // console.log('mavs')
-let mavs = binomialCalculator([0.70, 0.50, 0.66, 0.41])
+// let mavs = binomialCalculator([0.70, 0.50, 0.66, 0.41])
 // console.log('sas')
 // let sas = binomialCalculator([0.69, 0.43, 0.41, 0.69, 0.66, 0.65])
-let sas = binomialCalculator([0.40, 0.69, 0.65, 0.64])
+// let sas = binomialCalculator([0.40, 0.69, 0.65, 0.64])
 // 0-1
 
 // console.log('por')
 // let por = binomialCalculator([0.49, 0.33, 0.45, 0.3, 0.58])
-let por = binomialCalculator([0.34, 0.45, 0.31, 0.58])
+// let por = binomialCalculator([0.34, 0.45, 0.31, 0.58])
 //0-1
 // console.log('den')
 // let den = binomialCalculator([0.69, 0.41, 0.57, 0.75, 0.74])
-let den = binomialCalculator([0.56, 0.75, 0.73])
+// let den = binomialCalculator([0.56, 0.75, 0.73])
 //1-0
 // console.log('gsw')
 // let gsw = binomialCalculator([0.55, 0.51, 0.43, 0.68, 0.37])
-let gsw = binomialCalculator([0.42, 0.38, 0.69, 0.37])
+// let gsw = binomialCalculator([0.42, 0.38, 0.69, 0.37])
 //0-1
 // console.log(binomialCalculator([0.52, 0.75, 0.52]))
+// let mavs = binomialCalculator([0.65, 0.61, 0.47, 0.71, 0.51, 0.76, 0.47, 0.53, 0.81, 0.75, 0.85])
+// let lakers = binomialCalculator([0.4, 0.17, 0.45, 0.35, 0.26, 0.65, 0.45, 0.56, 0.56, 0.51])
+// console.log(binomialCalculator([0.75, 0.53, 0.79, 0.5, 0.52, 0.8, 0.77, 0.86, 0.49, 0.55, 0.65, 0.54, 0.7, 0.87, 0.73, 0.45, 0.53, 0.84, 0.74, 0.6, 0.64, 0.73, 0.65]))
 console.log('=================')
 console.log('=================')
 console.log('=================')
-console.log('mavs vs sas', hopper(mavs, sas, -0.5, 'vs SAS'))
-console.log('mavs vs por', hopper(mavs, por, 1.5, 'vs POR'))
-console.log('mavs vs denv', hopper(mavs, den, 2, 'vs DEN'))
-console.log('mavs vs gsw', hopper(mavs, gsw, -2, 'vs GSW'))
+// console.log('mavs vs lakers', hopper(mavs, lakers, 4, 'vs LAL'))
+// console.log('mavs vs sas', hopper(mavs, sas, -0.5, 'vs SAS'))
+// console.log('mavs vs por', hopper(mavs, por, 1.5, 'vs POR'))
+// console.log('mavs vs denv', hopper(mavs, den, 2, 'vs DEN'))
+// console.log('mavs vs gsw', hopper(mavs, gsw, -2, 'vs GSW'))
 
 // console.log(binomialCalculator([0.465,0.476,0.601,0.588]))
 // console.log(binomialCalculator([0.479,0.584,0.573]))
