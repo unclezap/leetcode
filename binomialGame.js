@@ -96,7 +96,7 @@ function hopper(hashHome, hashOpp, gmsBehind, opp) {
 
 }
 
-console.log(binomialCalculator([0.35, 0.35, 0.4, 0.4]))
+// console.log(binomialCalculator([0.35, 0.35, 0.4, 0.4]))
 // console.log(binomialCalculator([]))
 // console.log(binomialCalculator([0.612, 0.256, 0.032]))
 // console.log(binomialCalculator([0.631, 0.422, 0.467]))
@@ -118,6 +118,23 @@ console.log(binomialCalculator([0.35, 0.35, 0.4, 0.4]))
 // console.log('ESPN')
 // console.log('mavs')
 // let mavs = binomialCalculator([0.70, 0.50, 0.66, 0.41])
+let port = binomialCalculator([0.66, 0.67, 0.53, 0.41, 0.5])
+let mavs = binomialCalculator([0.58, 0.59, 0.63, 0.41, 0.65])
+console.log('mavs vs port', hopper(mavs, port, 0.5, 'vs POR'))
+
+// let mavs = binomialCalculator([0.58, 0.59, 0.63, 0.41, 0.65, 0.8, 0.72, 0.38, 0.63, 0.8, 0.68, 0.53, 0.61, 0.69, 0.62])
+// let mavs2 = binomialCalculator([0.63, 0.41, 0.65, 0.8, 0.72, 0.38, 0.63, 0.8, 0.68, 0.53, 0.61, 0.69, 0.62])
+// let mavs3 = binomialCalculator([0.58, 0.59, 0.63, 0.41, 0.65, 0.8, 0.72, 0.38, 0.63, 0.8, 0.68, 0.61, 0.69, 0.62])
+// let griz = binomialCalculator([0.34, 0.33, 0.18, 0.41, 0.8, 0.63, 0.74, 0.57, 0.53, 0.35, 0.66, 0.47, 0.71, 0.7, 0.39])
+// let griz3 = binomialCalculator([0.34, 0.33, 0.18, 0.41, 0.8, 0.63, 0.74, 0.57, 0.53, 0.35, 0.66, 0.71, 0.7, 0.39])
+// let blaz = binomialCalculator([0.66, 0.67, 0.53, 0.41, 0.5, 0.38, 0.36, 0.75, 0.63, 0.73, 0.85, 0.22, 0.26, 0.62])
+// let lake = binomialCalculator([0.42, 0.41, 0.75, 0.58, 0.75, 0.7, 0.48, 0.26, 0.37, 0.59, 0.83, 0.87, 0.66, 0.6])
+// let lake2 = binomialCalculator([0.75, 0.58, 0.75, 0.7, 0.48, 0.26, 0.37, 0.59, 0.83, 0.87, 0.66, 0.6])
+// let gold = binomialCalculator([0.46, 0.7, 0.59, 0.57, 0.64, 0.41, 0.4, 0.8, 0.8, 0.37, 0.38, 0.61, 0.61])
+// let spur = binomialCalculator([0.78, 0.41, 0.52, 0.28, 0.26, 0.37, 0.89, 0.14, 0.46, 0.27, 0.41, 0.3, 0.4, 0.39, 0.39])
+// let nola = binomialCalculator([0.65, 0.59, 0.47, 0.2, 0.65, 0.54, 0.59, 0.6, 0.24, 0.49, 0.66, 0.39, 0.4])
+
+
 // console.log('sas')
 // let sas = binomialCalculator([0.69, 0.43, 0.41, 0.69, 0.66, 0.65])
 // let sas = binomialCalculator([0.40, 0.69, 0.65, 0.64])
@@ -139,10 +156,67 @@ console.log(binomialCalculator([0.35, 0.35, 0.4, 0.4]))
 // let mavs = binomialCalculator([0.65, 0.61, 0.47, 0.71, 0.51, 0.76, 0.47, 0.53, 0.81, 0.75, 0.85])
 // let lakers = binomialCalculator([0.4, 0.17, 0.45, 0.35, 0.26, 0.65, 0.45, 0.56, 0.56, 0.51])
 // console.log(binomialCalculator([0.75, 0.53, 0.79, 0.5, 0.52, 0.8, 0.77, 0.86, 0.49, 0.55, 0.65, 0.54, 0.7, 0.87, 0.73, 0.45, 0.53, 0.84, 0.74, 0.6, 0.64, 0.73, 0.65]))
+
+for (let i = 0; i < 30; i++) {
+    console.log('???')
+}
 console.log('=================')
 console.log('=================')
 console.log('=================')
-// console.log('mavs vs lakers', hopper(mavs, lakers, 4, 'vs LAL'))
+// console.log('mavs vs griz', hopper(mavs, griz, -2, 'vs MEM'))
+// //94%
+// console.log('mavs vs blaz', hopper(mavs, blaz, 0.5, 'vs POR'))
+// //54%
+// console.log('mavs vs lake', hopper(mavs, lake, 3.5, 'vs LAL'))
+// //16%
+// console.log('mavs vs gold', hopper(mavs, gold, -3, 'vs GSW'))
+// //96%
+// console.log('mavs vs spur', hopper(mavs, spur, -3, 'vs SAN'))
+// //99.5%
+// console.log('mavs vs nola', hopper(mavs, nola, -6.5, 'vs NOL'))
+// //99.9%
+// console.log('****************')
+// console.log('****************')
+// console.log('****************')
+// console.log('mavs go 2-0', hopper(mavs2, lake2, 1.5, 'vs LAL 2-0 --- 34.2%'))
+// //37%
+// console.log('mavs go 2-0', hopper(mavs2, blaz, -0.5, 'vs POR --- 34.2%'))
+// //67%
+// console.log('mavs go 2-0', hopper(mavs2, griz, -3, 'vs MEM --- 34.2%'))
+// //97%
+
+// console.log('mavs go 1-1', hopper(mavs2, lake2, 3.5, 'vs LAL 1-1 --- 48.6%'))
+// //5%
+// console.log('mavs go 1-1', hopper(mavs2, blaz, 1.5, 'vs POR --- 48.6%'))
+// //35%
+// console.log('mavs go 1-1', hopper(mavs2, griz, -2, 'vs MEM --- 48.6%'))
+// //94%
+
+// console.log('mavs go 0-2', hopper(mavs2, lake2, 5.5, 'vs LAL 0-2 --- 17.2%'))
+// //0.5%
+// console.log('mavs go 0-2', hopper(mavs2, blaz, 2.5, 'vs POR --- 17.2%'))
+// //21%
+// console.log('mavs go 0-2', hopper(mavs2, griz, -1, 'vs MEM --- 17.2%'))
+// //87%
+// console.log('mavs go 0-2', hopper(mavs2, nola, -5.5, 'vs NOL --- 17.2%'))
+// //0.1%
+// console.log('/////////////////')
+// console.log('/////////////////')
+// console.log('/////////////////')
+// console.log('nola vs spur', hopper(nola, spur, 3.5, 'NOL vs SAN'))
+// console.log('nola vs gold', hopper(nola, gold, 3.5, 'NOL vs GSW'))
+// console.log('nola vs griz', hopper(nola, griz, 5, 'NOL vs MEM'))
+
+// console.log('...........')
+// console.log('...........')
+// console.log('...........')
+// console.log('mavs vs griz', hopper(mavs3, griz3, -3, 'vs Memphis 1-0'))
+// console.log('mavs vs griz', hopper(mavs3, griz3, -1, 'vs Memphis 0-1'))
+// console.log('mavs vs blaz', hopper(mavs3, blaz, 0, 'vs Portland 1-0'))
+// console.log('mavs vs blaz', hopper(mavs3, blaz, 1, 'vs Portland 0-1'))
+// console.log('mavs vs lake', hopper(mavs3, lake, 3, 'vs Lakers 1-0'))
+// console.log('mavs vs lake', hopper(mavs3, lake, 4, 'vs Lakers 0-1'))
+// // console.log('mavs vs lakers', hopper(mavs, lakers, 4, 'vs LAL'))
 // console.log('mavs vs sas', hopper(mavs, sas, -0.5, 'vs SAS'))
 // console.log('mavs vs por', hopper(mavs, por, 1.5, 'vs POR'))
 // console.log('mavs vs denv', hopper(mavs, den, 2, 'vs DEN'))
